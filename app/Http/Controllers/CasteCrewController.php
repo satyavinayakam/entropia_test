@@ -8,14 +8,14 @@ use App\CasteCrews;
 class CasteCrewController extends Controller
 {
     public function index(){
-        $caste = CasteCrews::all();
+        $caste = CasteCrews::paginate(15);
 
         return response()->json($caste);
     }
 
     public function show(){}
 
-    public function store(){
+    public function store(Request $reqest){
         $caste = new CasteCrews([
             'movie_id'      => $request->get('movie_id'),
             'member_id'      => $request->get('member_id')
@@ -29,7 +29,7 @@ class CasteCrewController extends Controller
         $caste = CasteCrews::find($id);
     }
 
-    public function update(){
+    public function update(Request $reqest){
         $caste = CasteCrews::find($id);
 
         $caste->movie_id  = $request->get('movie_id');

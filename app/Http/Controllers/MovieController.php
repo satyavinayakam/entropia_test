@@ -11,14 +11,14 @@ use App\Users;
 class MovieController extends Controller
 {
     public function index(){
-        $movies = Movies::all();
+        $movies = Movies::paginate(15);
 
         return response()->json($movies);
     }
 
     public function show(){}
 
-    public function store(){
+    public function store(Request $request){
         $movies = new Movies([
             'movie'         => $request->get('movie'),
             'release_date'  => $request->get('release_date'),
@@ -35,11 +35,12 @@ class MovieController extends Controller
 
     }
 
-    public function update(){
+    public function update(Request $reqest){
         $movies = Movies:: find($id);
 
         $movies->movie = $request->get('movie');
         $movie->release_date = $request->get('release_date');
+
 
         $movies->save();
     }

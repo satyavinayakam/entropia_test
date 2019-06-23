@@ -8,12 +8,12 @@ use App\MemberTypes;
 class MemberTypeController extends Controller
 {
     public function index(){
-        $member_type = MemberTypes::all();
+        $member_type = MemberTypes::paginate(15);
 
         return response()->json($member_type);
     }
 
-    public function store(){
+    public function store(Request $request){
 
         $member_type = new MemberTypes([
 
@@ -27,7 +27,7 @@ class MemberTypeController extends Controller
         $member_type = MemberTypes::find($id);
     }
 
-    public function update(){
+    public function update(Request $reqest){
         $member_type = MemberTypes::find($id);
 
         $member_type->member_name = $request->get('member_name');

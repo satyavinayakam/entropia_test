@@ -15,8 +15,8 @@ class CreateCasteCrewTable extends Migration
     {
         Schema::create('caste_crew', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('movie_id');
-            $table->string('member_id');
+            $table->integer('movie_id');
+            $table->integer('member_id');
             $table->timestamps();
         });
     }

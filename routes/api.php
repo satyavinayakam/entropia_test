@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\CasteCrews;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,14 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
+Route::resource('/users', 'UserController');
+
 Route::resource('/members', 'MemberController');
+
+Route::resource('/member_type', 'MemberTypeController');
+
+Route::resource('/movies', 'MovieController');
+
+Route::resource('/castcrew', 'CasteCrewController');
 
 
